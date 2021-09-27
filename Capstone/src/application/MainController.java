@@ -33,6 +33,17 @@ public class MainController {
     	window.show();
     }
     
+    public void onClick_btn_PasswordGenerator(ActionEvent event) throws IOException
+    {
+    	Parent tableViewParent = FXMLLoader.load(getClass().getResource("/fxml/CredentialsTableView.fxml"));
+    	Scene tableViewScene = new Scene(tableViewParent);
+    	
+    	Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+    	
+    	window.setScene(tableViewScene);
+    	window.show();
+    }
+    
 	public void onClick_btn_StoreCredentials(ActionEvent event) throws IOException {
 		
 		StringBuilder sb = new StringBuilder();
