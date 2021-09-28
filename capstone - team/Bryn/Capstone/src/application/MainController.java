@@ -46,12 +46,11 @@ public class MainController {
     
 	public void onClick_btn_StoreCredentials(ActionEvent event) throws IOException {
 		
-		StringBuilder sb = new StringBuilder();
-		sb.append(txt_URL.getText().toString() + ",");
-		sb.append(txt_username.getText().toString() + ",");
-		sb.append(txt_password.getText().toString() + ",");
 		
-		CreatingAndEntering2.writeToFile(sb.toString());
+		CreatingAndEntering2.writeToFile(txt_URL.getText().toString());
+		CreatingAndEntering2.writeToFile(txt_username.getText().toString());
+		CreatingAndEntering2.writeToFile(txt_password.getText().toString());
+
 		
 		txt_URL.clear();
 		txt_username.clear();
