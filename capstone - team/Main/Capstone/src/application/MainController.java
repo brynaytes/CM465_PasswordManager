@@ -46,16 +46,10 @@ public class MainController {
     
 	public void onClick_btn_StoreCredentials(ActionEvent event) throws IOException {
 		
-		StringBuilder sb = new StringBuilder();
-		sb.append(txt_URL.getText().toString() + "\n");
-		sb.append(txt_username.getText().toString() + "\n");
-		sb.append(txt_password.getText().toString() + "\n\n");
-		
-		File file = new File("PasswordFile-PleaseDontRead.txt");
-		PrintWriter W = new PrintWriter(new BufferedWriter(new FileWriter(file, true)));
-		W.write(sb.toString());
-		W.close();
-		
+		CreatingAndEntering2.writeToFile(txt_URL.getText().toString());
+		CreatingAndEntering2.writeToFile(txt_username.getText().toString());
+		CreatingAndEntering2.writeToFile(txt_password.getText().toString());
+
 		txt_URL.clear();
 		txt_username.clear();
 		txt_password.clear();
