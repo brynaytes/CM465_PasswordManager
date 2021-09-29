@@ -35,10 +35,23 @@ public class PasswordGeneratorController {
 	@FXML
 	private CheckBox uppercase_chkbx;
 	
+	public void initialize()
+	{
+		passwordLength_cb.getItems().clear();
+		passwordLength_cb.getItems().addAll(
+				4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20);
+	}
+	
 	public void onClick_btn_GeneratePassword(ActionEvent event)
 	{
-		String password = PasswordLogic.makePassword(8);
-		password_txt.setText(password);
+		try {
+			int passlength = passwordLength_cb.getValue() - 1;
+			String password = PasswordLogic.makePassword(passlength);
+			password_txt.setText(password);
+		}
+		catch (Exception e) {
+			System.out.println("Please select a password length");
+		}
 	}
 	
 	public void onClick_btn_CopyToClipboard(ActionEvent event)
