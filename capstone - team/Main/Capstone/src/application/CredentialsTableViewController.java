@@ -47,13 +47,12 @@ public class CredentialsTableViewController implements Initializable {
 	
 	public ObservableList<Credential> getCredentials()
 	{
-		ObservableList<Credential> creds = FXCollections.observableArrayList();
-		creds.add(new Credential("https://gmail.com", "mailmainsteve88", "x39#0E"));
-		creds.add(new Credential("https://evergy.com", "ToddSmith", "xtreme4lyfe!"));
-		creds.add(new Credential("https://icloud.com", "lvandross@yahoo.com", "password"));
-		creds.add(new Credential("https://myverizon.com", "7859832737", "$ecureP@Ssw0rd3"));
-		
-		return creds;
+		try {
+			return (FXCollections.observableList(ReadingText.reader()));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 
 }
