@@ -22,21 +22,25 @@ public class ReadingText {
 	 * 
 	 */
 	
-	static String fileName = "PasswordFile-PleaseDontRead.txt";
+	static String fileName = "PasswordFile-PleaseDontRead.csv";
 	
 	
-	public static ArrayList<String> reader() throws Exception{
-		ArrayList<String> arr = new ArrayList<String>();
+	
+	public static ArrayList<Credential> reader() throws Exception{
 		
-        File file = new File(fileName);
-        Scanner input = new Scanner (file);
+		ArrayList<Credential> arr = new ArrayList<Credential>();
+		
+       		File file = new File(fileName);
+        	Scanner input = new Scanner (file);
         
-        while (input.hasNext()) {
-            arr.add( input.nextLine());
-        }
-        
-        input.close();
-        return arr;
+		String[] tempList = input.nextLine().split(",",0);
+		
+		for(int i = 2; i < tempList.length; i+=3) {
+			arr.add(new Credential(tempList[i - 2],tempList[i-1],tempList[i] ));
+		}
+		
+        	input.close();
+        	return arr;
      }
 	
 	
