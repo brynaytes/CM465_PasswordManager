@@ -7,22 +7,37 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MainController">
    <children>
       <ImageView fitHeight="407.0" fitWidth="600.0" layoutY="-6.0">
          <image>
             <Image url="@download.jpeg" />
          </image>
       </ImageView>
-      <Button fx:id="addCred_btn" layoutX="410.0" layoutY="40.0" mnemonicParsing="false" prefHeight="65.0" prefWidth="150.0" text="Add Credentials" />
-      <Button fx:id="genPass_btn" layoutX="410.0" layoutY="121.0" mnemonicParsing="false" prefHeight="65.0" prefWidth="150.0" text="Generate Password" />
-      <Button fx:id="viewPass_btn" layoutX="410.0" layoutY="200.0" mnemonicParsing="false" prefHeight="65.0" prefWidth="150.0" text="View Password Safe" />
-      <Button fx:id="acctSettings_btn" layoutX="410.0" layoutY="282.0" mnemonicParsing="false" prefHeight="65.0" prefWidth="150.0" text="Account Settings" />
+      <Button fx:id="addCred_btn" layoutX="410.0" layoutY="40.0" mnemonicParsing="false" onAction="#onClick_btn_AddCredentials" prefHeight="65.0" prefWidth="150.0" text="Add Credentials">
+         <font>
+            <Font name="Arial" size="12.0" />
+         </font></Button>
+      <Button fx:id="genPass_btn" layoutX="410.0" layoutY="121.0" mnemonicParsing="false" onAction="#onClick_btn_GeneratePassword" prefHeight="65.0" prefWidth="150.0" text="Generate Password">
+         <font>
+            <Font name="Arial" size="12.0" />
+         </font></Button>
+      <Button fx:id="viewPass_btn" layoutX="410.0" layoutY="200.0" mnemonicParsing="false" onAction="#onClick_btn_ViewCredentials" prefHeight="65.0" prefWidth="150.0" text="View Password Safe">
+         <font>
+            <Font name="Arial" size="12.0" />
+         </font></Button>
+      <Button fx:id="acctSettings_btn" layoutX="410.0" layoutY="282.0" mnemonicParsing="false" onAction="#onClick_btn_ViewSettings" prefHeight="65.0" prefWidth="150.0" text="Account Settings">
+         <font>
+            <Font name="Arial" size="12.0" />
+         </font></Button>
       <Label fx:id="passSafe_lb" alignment="CENTER" layoutX="14.0" layoutY="22.0" prefHeight="83.0" prefWidth="391.0" text="Password Safe">
          <font>
-            <Font name="Courier Bold" size="48.0" />
+            <Font name="Arial" size="48.0" />
          </font>
       </Label>
-      <Button fx:id="signOut_btn" layoutX="14.0" layoutY="360.0" mnemonicParsing="false" text="Sign Out" />
+      <Button fx:id="signOut_btn" layoutX="14.0" layoutY="360.0" mnemonicParsing="false" text="Sign Out">
+         <font>
+            <Font name="Arial" size="12.0" />
+         </font></Button>
    </children>
 </AnchorPane>
