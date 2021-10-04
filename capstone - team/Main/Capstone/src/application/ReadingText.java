@@ -29,7 +29,7 @@ public class ReadingText {
 	
 	public static ArrayList<Credential> reader(){
 		
-		ArrayList<Credential> arr = new ArrayList<Credential>();
+	ArrayList<Credential> arr = new ArrayList<Credential>();
 		
        	File file = new File(fileName);
         Scanner input;
@@ -46,7 +46,7 @@ public class ReadingText {
         	return arr;
         
 		} catch (FileNotFoundException e) {
-				return arr;
+			return arr;
 		}
      	}
 	
