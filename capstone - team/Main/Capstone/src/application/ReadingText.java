@@ -26,22 +26,29 @@ public class ReadingText {
 	
 	
 	
-	public static ArrayList<Credential> reader() throws Exception{
+	
+	public static ArrayList<Credential> reader(){
 		
 		ArrayList<Credential> arr = new ArrayList<Credential>();
 		
-       		File file = new File(fileName);
-        	Scanner input = new Scanner (file);
-        
-		String[] tempList = input.nextLine().split(",",0);
+       	File file = new File(fileName);
+        Scanner input;
+		try {
+			
+			input = new Scanner (file);
+			String[] tempList = input.nextLine().split(",",0);
 		
-		for(int i = 2; i < tempList.length; i+=3) {
-			arr.add(new Credential(tempList[i - 2],tempList[i-1],tempList[i] ));
-		}
+			for(int i = 2; i < tempList.length; i+=3) {
+				arr.add(new Credential(tempList[i - 2],tempList[i-1],tempList[i] ));
+			}
 		
         	input.close();
         	return arr;
-     }
+        
+		} catch (FileNotFoundException e) {
+				return arr;
+		}
+     	}
 	
 	
 }
