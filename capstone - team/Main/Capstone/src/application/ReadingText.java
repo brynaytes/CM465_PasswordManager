@@ -29,28 +29,33 @@ public class ReadingText {
 	
 	
 	
+	static String fileName = "PasswordFile-PleaseDontRead.csv";
+	
+	
 	public static ArrayList<Credential> reader(){
-		
+	System.out.println("starting read");
 	ArrayList<Credential> arr = new ArrayList<Credential>();
 		
        	File file = new File(fileName);
         Scanner input;
+        String[] tempList;
 		try {
-			
 			input = new Scanner (file);
-			String[] tempList = input.nextLine().split(",",0);
-		
-			for(int i = 2; i < tempList.length; i+=3) {
-				arr.add(new Credential(tempList[i - 2],tempList[i-1],tempList[i] ));
+			while(input.hasNext()) {
+				tempList =  input.nextLine().split(",",0);
+				for(int i = 2; i < tempList.length; i+=3) {
+					arr.add(new Credential(tempList[i - 2],tempList[i-1],tempList[i] ));
+				}
 			}
-		
         	input.close();
         	return arr;
         
 		} catch (FileNotFoundException e) {
+			System.out.println("error handled, returning blank array");
+
 			return arr;
 		}
-     	}
+     }
 	
 	
 }
