@@ -45,8 +45,11 @@ public class PasswordGeneratorController {
 	public void onClick_btn_GeneratePassword(ActionEvent event)
 	{
 		try {
-			int passlength = passwordLength_cb.getValue() - 1;
-			String password = PasswordLogic.makePassword(passlength);
+			int passlength = passwordLength_cb.getValue();
+			boolean uc = uppercase_chkbx.isSelected();
+			boolean sy = symbols_chkbx.isSelected();
+			boolean nb = numbers_chkbx.isSelected();
+			String password = PasswordLogic.makePassword(passlength, uc, sy, nb);
 			password_txt.setText(password);
 		}
 		catch (Exception e) {
