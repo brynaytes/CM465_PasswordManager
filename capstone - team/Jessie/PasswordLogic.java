@@ -2,24 +2,41 @@ package application;
 
 public class PasswordLogic {
 	
-	public static String makePassword(int length)
+	public static String makePassword(int length, boolean uc, boolean sy, boolean nb)
 	{
 		String password = "";
 		
-		for(int i = 0; i < length -2; i++) 
+		for(int i = 0; i < length -3; i++) 
 		{
 			password = password + randomCharacter("abcdefghijklmnopqrstuvwxyz");
 		}
 
+		if(nb == true) {
+			String randomDigit = randomCharacter("0123456789");
+			password = insertAtRandom(password, randomDigit);
+		}
+		else {
+			String randomLowercase =  randomCharacter("abcdefghijklmnopqrstuvwxyz");
+			password = insertAtRandom(password, randomLowercase);
+		}
 		
-		String randomDigit = randomCharacter("0123456789");
-		password = insertAtRandom(password, randomDigit);
+		if(sy == true) {
+			String randomSymbol = randomCharacter("+-*/?!@#$%&");
+			password = insertAtRandom(password, randomSymbol);
+		}
+		else {
+			String randomLowercase =  randomCharacter("abcdefghijklmnopqrstuvwxyz");
+			password = insertAtRandom(password, randomLowercase);
+		}
 		
-		String randomSymbol = randomCharacter("+-*/?!@#$%&");
-		password = insertAtRandom(password, randomSymbol);
-		
-		String randomUppercase = randomCharacter("ABCDEFGHIJKLMNOPQRSTUVWXYZ");
-		password = insertAtRandom(password, randomUppercase);
+		if(uc == true) {
+			String randomUppercase = randomCharacter("ABCDEFGHIJKLMNOPQRSTUVWXYZ");
+			password = insertAtRandom(password, randomUppercase);
+		}
+		else {
+			String randomLowercase =  randomCharacter("abcdefghijklmnopqrstuvwxyz");
+			password = insertAtRandom(password, randomLowercase);
+		}
 		
 		return password;
 
