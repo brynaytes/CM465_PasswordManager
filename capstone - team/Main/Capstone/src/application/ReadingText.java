@@ -24,10 +24,6 @@ public class ReadingText {
 	 * 
 	 */
 	
-	static String fileName = "PasswordFile-PleaseDontRead.csv";
-	
-	
-	
 	
 	static String fileName = "PasswordFile-PleaseDontRead.csv";
 	
