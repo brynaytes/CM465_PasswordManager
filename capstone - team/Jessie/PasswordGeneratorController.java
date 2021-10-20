@@ -33,6 +33,8 @@ public class PasswordGeneratorController {
 	@FXML
 	private CheckBox uppercase_chkbx;
 	@FXML
+	private CheckBox lowercase_chkbx;
+	@FXML
 	private CheckBox word_chkbx;
 	
 	public void initialize()
@@ -47,18 +49,21 @@ public class PasswordGeneratorController {
 	
 	public void onClick_btn_GeneratePassword(ActionEvent event)
 	{
-		try {
-			int passlength = passwordLength_cb.getValue();
-			boolean uc = uppercase_chkbx.isSelected();
-			boolean sy = symbols_chkbx.isSelected();
-			boolean nb = numbers_chkbx.isSelected();
-			boolean wd = word_chkbx.isSelected();
-			String password = PasswordLogic.makePassword(passlength, uc, sy, nb, wd);
-			password_txt.setText(password);
+		int passlength = passwordLength_cb.getValue();
+		boolean uc = uppercase_chkbx.isSelected();
+		boolean lc = lowercase_chkbx.isSelected();
+		boolean sy = symbols_chkbx.isSelected();
+		boolean nb = numbers_chkbx.isSelected();
+		boolean wd = word_chkbx.isSelected();
+		
+		String password = PasswordLogic.makePassword(passlength, uc, lc, sy, nb, wd);
+		
+		if (wd == true) {
+			password = PasswordLogic.dictionaryWord(password);
 		}
-		catch (Exception e) {
-			System.out.println("Please select a password length");
-		}
+		
+		password_txt.setText(password);
+
 	}
 	
 	public void onClick_btn_CopyToClipboard(ActionEvent event)
@@ -80,4 +85,14 @@ public class PasswordGeneratorController {
     	window.show();
 	}
 
+	public void onClick_btn_RestoreDefault(ActionEvent event)
+	{
+		passwordLength_cb.setValue(8);
+		password_txt.setText("");
+		symbols_chkbx.setSelected(false);
+		numbers_chkbx.setSelected(false);
+		uppercase_chkbx.setSelected(false);
+		lowercase_chkbx.setSelected(false);
+		word_chkbx.setSelected(false);
+	}
 }
