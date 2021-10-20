@@ -1,72 +1,83 @@
 package application;
 
-import java.util.*;
-import java.security.SecureRandom;
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.util.List;
+import java.util.Random;
+
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 
 public class PasswordLogic {
 	
-	public static String makePassword(int length, boolean uc, boolean sy, boolean nb, boolean wd)
+	public static String makePassword(int length, boolean uc, boolean lc, boolean sy, boolean nb, boolean wd)
 	{
-        String upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-        String lower = "abcdefghijklmnopqrstuvwxyz";
-        String number = "0123456789";
-        String symbol = "`~!@#$%^&*()-_=+|}{][;:',<.>/?";
- 
-        SecureRandom random = new SecureRandom();
-        StringBuilder sb = new StringBuilder();
+		String password = "";
 
-        for (int i = 0; i < length/4; i++)	{
-            int randomIndex = random.nextInt(lower.length());
-            sb.append(lower.charAt(randomIndex));
-        }
-        
-        if (uc == false) {
-        	for (int i = 0; i < length/4; i++)	{
-        		int randomIndex = random.nextInt(upper.length());
-        		sb.append(upper.charAt(randomIndex));
-        	}
-        }
-        
-        if (nb == false) {
-        	for (int i = 0; i < length/4; i++)	{
-        		int randomIndex = random.nextInt(number.length());
-        		sb.append(number.charAt(randomIndex));
-        	}
-        }
-        
-        if (sy == false) {
-        	for (int i = 0; i < length/4; i++)	{
-        		int randomIndex = random.nextInt(symbol.length());
-        		sb.append(symbol.charAt(randomIndex));
-        	}
-        }
-        
-        String pass1 = sb.toString();
-        
-        int pass1Length = pass1.length();
-        int rest = length - pass1Length;
-        for (int i = 0; i < rest; i++)	{
-            int randomIndex = random.nextInt(lower.length());
-            sb.append(lower.charAt(randomIndex));
-        }
-        
-        String finalpass = scramblePassword(sb.toString());
-        //will figure out how to get random dictionary words later
-        if (wd == true) {
-        	finalpass = "test" + finalpass;
-        }
-        return finalpass;
+		while(password.length() < length) {
+
+			if(nb == false) {
+				String randomDigit = randomCharacter("0123456789");
+				password = insertAtRandom(password, randomDigit);
+			}
+
+			if(sy == false) {
+				String randomSymbol = randomCharacter("`~!@#$%^&*()-_=+|}{][;:',<.>/?");
+				password = insertAtRandom(password, randomSymbol);
+			}
+
+			if(uc == false) {
+				String randomUppercase = randomCharacter("ABCDEFGHIJKLMNOPQRSTUVWXYZ");
+				password = insertAtRandom(password, randomUppercase);
+			}
+			
+			if(lc == false) {
+				String randomLowercase =  randomCharacter("abcdefghijklmnopqrstuvwxyz");
+				password = insertAtRandom(password, randomLowercase);
+			}
+			
+			if(nb == true && sy == true && uc == true && lc == true && wd == false) {
+				Alert alert = new Alert(AlertType.ERROR);
+				alert.setHeaderText("No Items Selected");
+				alert.setContentText("Please include at least one character type or word.");
+				alert.show();
+				break;
+			}
+			
+			if(nb == true && sy == true && uc == true && lc == true && wd == true) {
+				break;
+			}
+			
+		}
+		return password;
 	}
 	
-	public static String scramblePassword(String s)
-	{
-		String[] scram = s.split("");
-        List<String> letters = Arrays.asList(scram);
-        Collections.shuffle(letters);
-        StringBuilder sb = new StringBuilder(s.length());
-        for (String c : letters) {
-            sb.append(c);
-        }
-        return sb.toString();
+	public static String randomCharacter(String characters) {
+		int n = characters.length();
+		int r = (int)(n * Math.random());
+		return characters.substring(r, r + 1);
+	}
+	
+	public static String insertAtRandom(String str, String toInsert) {
+		int n = str.length();
+		int r = (int)((n + 1) * Math.random());
+		return str.substring(0, r) + toInsert + str.substring(r);
+	}	
+	
+	public static String dictionaryWord(String password) {
+
+		List<String> lines = null;
+		try {
+			lines = Files.readAllLines(new File("words.txt").toPath());
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		final Random rand = new Random();
+		String word = lines.get(rand.nextInt(lines.size()));
+        password = word + password;
+
+		return password;
 	}
 }
