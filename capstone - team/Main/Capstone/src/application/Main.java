@@ -12,7 +12,7 @@ public class Main extends Application {
 	public void start(Stage primaryStage) throws Exception {
 		
 		//This will load our fxml file that we generated with Scene Builder
-		Parent root = FXMLLoader.load(getClass().getResource("/fxml/Main.fxml"));
+		Parent root = FXMLLoader.load(getClass().getResource("/fxml/logincontroller.fxml"));
 		Scene scene = new Scene(root);
 				
 		primaryStage.setTitle("Password Manager");
