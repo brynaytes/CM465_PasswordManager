@@ -106,6 +106,26 @@ public class Logincontroller {
 
 			//loginMessageLabel.setText("Please Enter Username and Password");
 		}
+		
+		if(usernameTextField.getText().isBlank() && (enterPasswordField.getText().isBlank())){
+			try {
+			Parent tableViewParent;
+			
+			tableViewParent = FXMLLoader.load(getClass().getResource("/fxml/Main.fxml"));
+			
+			Scene tableViewScene = new Scene(tableViewParent);
+    	
+			Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+    	
+			window.setScene(tableViewScene);
+			window.show();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+			//	e.printStackTrace();
+			}
+			
+		}
+		
 	}
 	
 
