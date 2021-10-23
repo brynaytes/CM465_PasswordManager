@@ -55,7 +55,9 @@ public class MainController {
     }
     
 
-	
+	public void onClick_btn_Logout(ActionEvent event) {
+		
+	}
 	
 	public void onClick_btn_Exit(ActionEvent event) {
 		System.exit(0);
