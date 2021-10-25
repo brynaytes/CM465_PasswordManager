@@ -1,6 +1,9 @@
 package application;
 
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -27,16 +30,21 @@ public class AddCredentialsController {
 	public void onClick_btn_StoreCredentials(ActionEvent event)
 	{
 		try {
-			CreatingAndEntering2.writeToFile(URL_txt.getText());
-			CreatingAndEntering2.writeToFile(username_txt.getText());
-			CreatingAndEntering2.writeToFile(password_txt.getText());
-			URL_txt.clear();
-			username_txt.clear();
-			password_txt.clear();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			//e.printStackTrace();
+			//Connection to the Database
+			Connection c = DBUtil.getDataSource().getConnection();
+			Statement stmt = c.createStatement();
+			//SQL for selecting the columns we want from the credential table
+			String SQL = "INSERT INTO credential (url, username, password)"
+						+ "VALUES ('"+URL_txt.getText()+"','"+username_txt.getText()+"','"+password_txt.getText()+"');";
+			stmt.executeUpdate(SQL);
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
 		}
+		
+		URL_txt.clear();
+		username_txt.clear();
+		password_txt.clear();
 	}
 	
 	public void onClick_btn_BackToMain(ActionEvent event) throws IOException
