@@ -85,4 +85,27 @@ public class PasswordLogic {
 
 		return password;
 	}
+	
+	public static int checkCount(boolean uc, boolean lc, boolean sy, boolean nb, boolean wd)
+	{
+		int count = 0;
+		
+		if (uc == false) {
+			count++;
+		}
+		if (lc == false) {
+			count++;
+		}
+		if (sy == false) {
+			count++;
+		}
+		if (nb == false) {
+			count++;
+		}
+		if (wd == true) {
+			count++;
+		}
+		
+		return count;
+	}
 }
