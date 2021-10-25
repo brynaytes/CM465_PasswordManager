@@ -4,10 +4,11 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="application.SettingsController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.SettingsController">
    <children>
       <Label layoutX="253.0" layoutY="32.0" text="Settings">
          <font>
@@ -74,12 +75,15 @@
             <Font name="Arial Bold Italic" size="14.0" />
          </font>
       </Label>
-      <RadioButton fx:id="lightTheme_rb" layoutX="423.0" layoutY="109.0" mnemonicParsing="false" text="Light Theme">
+      <RadioButton fx:id="lightTheme_rb" layoutX="423.0" layoutY="109.0" mnemonicParsing="false" selected="true" text="Light Theme">
          <font>
             <Font name="Arial" size="12.0" />
          </font>
+         <toggleGroup>
+            <ToggleGroup fx:id="Theme" />
+         </toggleGroup>
       </RadioButton>
-      <RadioButton fx:id="darkTheme_rb" layoutX="423.0" layoutY="137.0" mnemonicParsing="false" text="Dark Theme">
+      <RadioButton fx:id="darkTheme_rb" layoutX="423.0" layoutY="137.0" mnemonicParsing="false" text="Dark Theme" toggleGroup="$Theme">
          <font>
             <Font name="Arial" size="12.0" />
          </font>
@@ -89,17 +93,20 @@
             <Font name="Arial Italic" size="13.0" />
          </font>
       </Label>
-      <RadioButton fx:id="storeCSV_rb" layoutX="423.0" layoutY="197.0" mnemonicParsing="false" text="Local CSV">
+      <RadioButton fx:id="storeCSV_rb" layoutX="423.0" layoutY="197.0" mnemonicParsing="false" selected="true" text="Local CSV">
+         <font>
+            <Font name="Arial" size="12.0" />
+         </font>
+         <toggleGroup>
+            <ToggleGroup fx:id="Storage" />
+         </toggleGroup>
+      </RadioButton>
+      <RadioButton fx:id="storeTXT_rb" layoutX="423.0" layoutY="228.0" mnemonicParsing="false" text="Local TXT" toggleGroup="$Storage">
          <font>
             <Font name="Arial" size="12.0" />
          </font>
       </RadioButton>
-      <RadioButton fx:id="storeTXT_rb" layoutX="423.0" layoutY="228.0" mnemonicParsing="false" text="Local TXT">
-         <font>
-            <Font name="Arial" size="12.0" />
-         </font>
-      </RadioButton>
-      <RadioButton fx:id="storeDatabase_rb" layoutX="423.0" layoutY="260.0" mnemonicParsing="false" text="Local Database">
+      <RadioButton fx:id="storeDatabase_rb" layoutX="423.0" layoutY="260.0" mnemonicParsing="false" text="Local Database" toggleGroup="$Storage">
          <font>
             <Font name="Arial" size="12.0" />
          </font>
