@@ -14,27 +14,32 @@ public class PasswordLogic {
 	public static String makePassword(int length, boolean uc, boolean lc, boolean sy, boolean nb, boolean wd)
 	{
 		String password = "";
+		int i = 0;
+		
+		while(i < length) {
 
-		while(password.length() < length) {
-
-			if(nb == false) {
+			if(nb == false && i < length) {
 				String randomDigit = randomCharacter("0123456789");
 				password = insertAtRandom(password, randomDigit);
+				i++;
 			}
 
-			if(sy == false) {
+			if(sy == false && i < length) {
 				String randomSymbol = randomCharacter("`~!@#$%^&*()-_=+|}{][;:',<.>/?");
 				password = insertAtRandom(password, randomSymbol);
+				i++;
 			}
 
-			if(uc == false) {
+			if(uc == false && i < length) {
 				String randomUppercase = randomCharacter("ABCDEFGHIJKLMNOPQRSTUVWXYZ");
 				password = insertAtRandom(password, randomUppercase);
+				i++;
 			}
 			
-			if(lc == false) {
+			if(lc == false && i < length) {
 				String randomLowercase =  randomCharacter("abcdefghijklmnopqrstuvwxyz");
 				password = insertAtRandom(password, randomLowercase);
+				i++;
 			}
 			
 			if(nb == true && sy == true && uc == true && lc == true && wd == false) {
