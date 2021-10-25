@@ -11,9 +11,11 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.Clipboard;
 import javafx.scene.input.ClipboardContent;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 public class PasswordGeneratorController {
@@ -36,6 +38,8 @@ public class PasswordGeneratorController {
 	private CheckBox lowercase_chkbx;
 	@FXML
 	private CheckBox word_chkbx;
+	@FXML
+	private Label strength_lbl;
 	
 	public void initialize()
 	{
@@ -63,6 +67,24 @@ public class PasswordGeneratorController {
 		}
 		
 		password_txt.setText(password);
+		
+		int count = PasswordLogic.checkCount(uc, lc, sy, nb, wd);
+		
+		if(count == 5) {
+			strength_lbl.setText("Strong");
+		}
+		else if(count == 4 && passwordLength_cb.getValue() >= 8) {
+			strength_lbl.setText("Strong");
+		}
+		else if (count == 4) {
+			strength_lbl.setText("Moderate");
+		}
+		else if(count == 3 && passwordLength_cb.getValue() >= 6) {
+			strength_lbl.setText("Moderate");
+		}
+		else {
+			strength_lbl.setText("Weak");
+		}
 
 	}
 	
@@ -88,6 +110,7 @@ public class PasswordGeneratorController {
 	public void onClick_btn_RestoreDefault(ActionEvent event)
 	{
 		passwordLength_cb.setValue(8);
+		strength_lbl.setText("");
 		password_txt.setText("");
 		symbols_chkbx.setSelected(false);
 		numbers_chkbx.setSelected(false);
