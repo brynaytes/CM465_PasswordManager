@@ -61,32 +61,29 @@ public class Logincontroller {
 		//System.out.println("starting");
 	}
 	
-	public void onClick_btn_register(ActionEvent event) {
+	public void onClick_btn_register(ActionEvent event) throws IOException{
 		//System.out.println("registering");
-		try {
+		
 			Parent tableViewParent;
 			tableViewParent = FXMLLoader.load(getClass().getResource("/fxml/registercontroller.fxml"));
 			Scene tableViewScene = new Scene(tableViewParent);
 			Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
 			window.setScene(tableViewScene);
 			window.show();
-    	} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 	}
 	
 	
-	public void onClick_btn_login(ActionEvent event) {
+	public void onClick_btn_login(ActionEvent event) throws IOException{
 	//	System.out.println("starting test");
 
 		if ((usernameTextField.getText().isBlank() == false) && (enterPasswordField.getText().isBlank() == false))  {
 			//System.out.println("validating");
 
 			if(validatelogin()) {
-				//System.out.println("login validated");
+
+				//successful login, proceed to Main.fxml
 				Parent tableViewParent;
-				try {
+				
 					tableViewParent = FXMLLoader.load(getClass().getResource("/fxml/Main.fxml"));
 				
 					Scene tableViewScene = new Scene(tableViewParent);
@@ -95,20 +92,15 @@ public class Logincontroller {
 		    	
 					window.setScene(tableViewScene);
 					window.show();
-		    	} catch (IOException e) {
-					// TODO Auto-generated catch block
-					//e.printStackTrace();
-				}
+		    	
 			};
 		}else
 		{
-			//System.out.println("something is empty");
-
-			//loginMessageLabel.setText("Please Enter Username and Password");
+			//this will be for if username or password is empty, but for testing that works.
 		}
 		
 		if(usernameTextField.getText().isBlank() && (enterPasswordField.getText().isBlank())){
-			try {
+			
 			Parent tableViewParent;
 			
 			tableViewParent = FXMLLoader.load(getClass().getResource("/fxml/Main.fxml"));
@@ -119,10 +111,7 @@ public class Logincontroller {
     	
 			window.setScene(tableViewScene);
 			window.show();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-			//	e.printStackTrace();
-			}
+			
 			
 		}
 		

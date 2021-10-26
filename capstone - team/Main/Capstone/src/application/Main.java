@@ -13,27 +13,34 @@ import javafx.scene.control.Alert.AlertType;
 
 public class Main extends Application {
 	@Override
-	public void start(Stage primaryStage) throws Exception {
-		
+	public void start(Stage primaryStage){
+		try {
 		//This will load our fxml file that we generated with Scene Builder
-		Parent root = FXMLLoader.load(getClass().getResource("/fxml/logincontroller.fxml"));
+		Parent root;
+		
+			root = FXMLLoader.load(getClass().getResource("/fxml/logincontroller.fxml"));
+		
 		Scene scene = new Scene(root);
 				
 		primaryStage.setTitle("Password Manager");
 		primaryStage.setScene(scene);
 		primaryStage.show();
-	}
-	
-	public static void main(String[] args) {
-		try {
-			launch(args);
-		}catch(Exception e){
+		} catch (Exception e) {
 			Alert alert = new Alert(AlertType.ERROR);
-			alert.setTitle("Error Dialog");
-			alert.setHeaderText("Look, an Error Dialog");
-			alert.setContentText("Ooops, there was an error!");
+			alert.setTitle("Critical Error");
+			alert.setHeaderText("Oops, something went wrong!");
+			//alert.setContentText("");
 
 			alert.showAndWait();
 		}
+	}
+	
+	public static void main(String[] args) {
+		
+			launch(args);
+		
+		
+			
+		
 	}
 }
