@@ -55,8 +55,21 @@ public class MainController {
     }
     
 
-	public void onClick_btn_Logout(ActionEvent event) {
+	public void onClick_btn_Logout(ActionEvent event) throws IOException {
+		/**
+		 * 
+		 * we need code to unassociate login info or something
+		 * 
+		 */
 		
+		
+    	Parent tableViewParent = FXMLLoader.load(getClass().getResource("/fxml/logincontroller.fxml"));
+    	Scene tableViewScene = new Scene(tableViewParent);
+    	
+    	Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+    	
+    	window.setScene(tableViewScene);
+    	window.show();
 	}
 	
 	public void onClick_btn_Exit(ActionEvent event) {
