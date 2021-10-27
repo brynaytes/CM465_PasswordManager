@@ -85,7 +85,6 @@ public class PasswordGeneratorController {
 		else {
 			strength_lbl.setText("Weak");
 		}
-
 	}
 	
 	public void onClick_btn_CopyToClipboard(ActionEvent event)
@@ -112,10 +111,10 @@ public class PasswordGeneratorController {
 		passwordLength_cb.setValue(8);
 		strength_lbl.setText("");
 		password_txt.setText("");
-		symbols_chkbx.setSelected(false);
-		numbers_chkbx.setSelected(false);
-		uppercase_chkbx.setSelected(false);
-		lowercase_chkbx.setSelected(false);
+		symbols_chkbx.setSelected(true);
+		numbers_chkbx.setSelected(true);
+		uppercase_chkbx.setSelected(true);
+		lowercase_chkbx.setSelected(true);
 		word_chkbx.setSelected(false);
 	}
 }
