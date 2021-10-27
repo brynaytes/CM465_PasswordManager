@@ -18,31 +18,31 @@ public class PasswordLogic {
 		
 		while(i < length) {
 
-			if(nb == false && i < length) {
+			if(nb == true && i < length) {
 				String randomDigit = randomCharacter("0123456789");
 				password = insertAtRandom(password, randomDigit);
 				i++;
 			}
 
-			if(sy == false && i < length) {
+			if(sy == true && i < length) {
 				String randomSymbol = randomCharacter("`~!@#$%^&*()-_=+|}{][;:',<.>/?");
 				password = insertAtRandom(password, randomSymbol);
 				i++;
 			}
 
-			if(uc == false && i < length) {
+			if(uc == true && i < length) {
 				String randomUppercase = randomCharacter("ABCDEFGHIJKLMNOPQRSTUVWXYZ");
 				password = insertAtRandom(password, randomUppercase);
 				i++;
 			}
 			
-			if(lc == false && i < length) {
+			if(lc == true && i < length) {
 				String randomLowercase =  randomCharacter("abcdefghijklmnopqrstuvwxyz");
 				password = insertAtRandom(password, randomLowercase);
 				i++;
 			}
 			
-			if(nb == true && sy == true && uc == true && lc == true && wd == false) {
+			if(nb == false && sy == false && uc == false && lc == false && wd == false) {
 				Alert alert = new Alert(AlertType.ERROR);
 				alert.setHeaderText("No Items Selected");
 				alert.setContentText("Please include at least one character type or word.");
@@ -50,7 +50,7 @@ public class PasswordLogic {
 				break;
 			}
 			
-			if(nb == true && sy == true && uc == true && lc == true && wd == true) {
+			if(nb == false && sy == false && uc == false && lc == false && wd == true) {
 				break;
 			}
 			
@@ -90,16 +90,16 @@ public class PasswordLogic {
 	{
 		int count = 0;
 		
-		if (uc == false) {
+		if (uc == true) {
 			count++;
 		}
-		if (lc == false) {
+		if (lc == true) {
 			count++;
 		}
-		if (sy == false) {
+		if (sy == true) {
 			count++;
 		}
-		if (nb == false) {
+		if (nb == true) {
 			count++;
 		}
 		if (wd == true) {
