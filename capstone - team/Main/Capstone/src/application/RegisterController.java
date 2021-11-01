@@ -23,6 +23,10 @@ import javafx.scene.image.ImageView;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 //import java.sql.Connection;
 //import java.sql.Statement;
 import java.util.ResourceBundle;
@@ -31,87 +35,100 @@ import java.util.ResourceBundle;
 public class RegisterController implements Initializable{
 	
 @FXML
-private ImageView sheildImageView;
+private ImageView shieldImageView;
 @FXML
 private Button closeButton;
 @FXML
 private Label registrationMessageLabel;
 @FXML
-private PasswordField setPasswordField;
+private PasswordField setPasswordTextField;
 @FXML
-private PasswordField confirmPasswordField;
+private PasswordField confirmPasswordTextField;
 @FXML
 private Label confirmPasswordLabel;
 @FXML
-private TextField firstnameTextFeild;
+private TextField firstnameTextField;
 @FXML
-private TextField lastnameTextFeild;
+private TextField lastnameTextField;
 @FXML
-private TextField usernameTextFeild;
+private TextField usernameTextField;
 
 
 	  public void intalize(URL url, ResourceBundle resourceBundle) {
 		  File shieldFile = new File("Image/8.png");
 		  Image shieldImage = new Image(shieldFile.toURI().toString());
-		  sheildImageView.setImage(shieldImage);
+		  shieldImageView.setImage(shieldImage);
 	  }
+	  
 	  public void registerButtonAction(ActionEvent event) {
 		  
-	try {
-	  		Parent tableViewParent;
-		
-			tableViewParent = FXMLLoader.load(getClass().getResource("/fxml/logincontroller.fxml"));
-			
-			Scene tableViewScene = new Scene(tableViewParent);
-			Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
-			window.setScene(tableViewScene);
-			window.show();
-		  } catch (IOException e) {
-				// TODO Auto-generated catch block
-				//e.printStackTrace();
-			}
-		  /*
-		  registerUser();
-		  if(setPasswordField.getText().equals(confirmPasswordField.getText())) {
-	    		 confirmPasswordLabel.setText("you are set"); 
-	      } else {
-	    	  confirmPasswordLabel.setText("password does not match");
-	      }
-		*/
-		  
+		  if(usernameTextField.getText().isBlank())
+		  {
+			  System.out.println("Username is a required field.");
+		      usernameTextField.requestFocus();
+		  }
+		  else if(setPasswordTextField.getText().isBlank())
+		  {
+			  System.out.println("You must enter a password.");
+			  setPasswordTextField.requestFocus();
+		  }
+		  else if(confirmPasswordTextField.getText().isEmpty())
+		  {
+			  System.out.println("Please confirm the password.");
+			  confirmPasswordTextField.requestFocus();
+		  }
+		  else if(setPasswordTextField.getText().equals(confirmPasswordTextField.getText()) == false)
+		  {
+			  System.out.println("Passwords do not match, please try again.");
+			  setPasswordTextField.clear();
+			  confirmPasswordTextField.clear();
+			  setPasswordTextField.requestFocus();
+		  }
+		  else 
+			  registerUser(); 
 	  }
+	  
 	  public void closeButtonOnAction(ActionEvent event) {
-		  Stage stage = (Stage) closeButton.getScene().getWindow();
-		  stage.close();
-		  Platform.exit();
+		  try {
+		  		Parent tableViewParent;
+			
+				tableViewParent = FXMLLoader.load(getClass().getResource("/fxml/logincontroller.fxml"));
+				
+				Scene tableViewScene = new Scene(tableViewParent);
+				Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+				window.setScene(tableViewScene);
+				window.show();
+			  } catch (IOException e) {
+					e.printStackTrace();
+				}
+		  //Stage stage = (Stage) closeButton.getScene().getWindow();
+		  //stage.close();
+		  //Platform.exit();
 		  
 	  }
-      public void registerUser(){
-    /*	  DatabaseConnection connectNow = new DatabaseConnection();
-    	  Connection connectDB = connectNow.getConnection();
+	  
+      public void registerUser()
+      {
+    	  String UsernameSQL= "SELECT * FROM user_account WHERE user_id = '"+ usernameTextField.getText()+"';";
+    	  String RegisterSQL= "INSERT INTO user_account (user_id, password)"
+					+ "VALUES ('"+usernameTextField.getText()+"','"+setPasswordTextField.getText()+"');";
     	  
-    	  String firstname = firstnameTextFeild.getText();
-    	  String lastname = lastnameTextFeild.getText();
-    	  String username = usernameTextFeild.getText();
-    	  String password = setPasswordField.getText();
-    	  
-    	  String insertFeilds = "";
-    	  String insertValues = firstname +"','" + lastname +"','" + username +"','" + password +"')";
-    	  String insertToRegister = insertFeilds + insertValues ;
-    
-    	try {  
-          
-           Statement statement = connectDB.createStatement();
-           Statement.executeUpdate(insertToRegister );
-           
-           registrationMessageLabel.setText("User has been registered successfully.");
+    	try {
+    		//Connection to the Database
+    		Connection c = DBUtil.getDataSource().getConnection();
+    		Statement stmt = c.createStatement();
+    		ResultSet results = stmt.executeQuery(UsernameSQL);
     		
+    		if(results.next())
+    			System.out.println("That username is unavailable, please enter a new username.");
+    		else
+    			stmt.executeUpdate(RegisterSQL);
     		
-    	}catch (Exception e) {
+    		System.out.println("Registration Successful");
+    		
+    	} catch (SQLException e) {
     		e.printStackTrace();
-    		e.getCause();
-    	}*/
-    	
+    	}
       }
 	
       @Override
