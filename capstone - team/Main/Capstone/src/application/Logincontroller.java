@@ -22,6 +22,10 @@ import java.util.ResourceBundle;
 
 
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 
 public class Logincontroller {
@@ -41,7 +45,6 @@ public class Logincontroller {
 	@FXML
 	private PasswordField enterPasswordField;
 	
-	private final String testingAuth = "test";
 	/*
 	@Override
 	public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -74,10 +77,8 @@ public class Logincontroller {
 	
 	
 	public void onClick_btn_login(ActionEvent event) throws IOException{
-	//	System.out.println("starting test");
 
 		if ((usernameTextField.getText().isBlank() == false) && (enterPasswordField.getText().isBlank() == false))  {
-			//System.out.println("validating");
 
 			if(validatelogin()) {
 
@@ -93,28 +94,11 @@ public class Logincontroller {
 					window.setScene(tableViewScene);
 					window.show();
 		    	
-			};
-		}else
-		{
-			//this will be for if username or password is empty, but for testing that works.
-		}
-		
-		if(usernameTextField.getText().isBlank() && (enterPasswordField.getText().isBlank())){
+			}
 			
-			Parent tableViewParent;
-			
-			tableViewParent = FXMLLoader.load(getClass().getResource("/fxml/Main.fxml"));
-			
-			Scene tableViewScene = new Scene(tableViewParent);
-    	
-			Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
-    	
-			window.setScene(tableViewScene);
-			window.show();
-			
-			
-		}
-		
+		} else
+			System.out.println("Username or Password fields cannot be blank. Please enter credentials and try again.");
+				
 	}
 	
 
@@ -124,13 +108,25 @@ public class Logincontroller {
 	}
 	
 	public boolean validatelogin() {
-		//System.out.println(usernameTextField.getText());
-		//System.out.println(enterPasswordField.getText());
-
-		if((usernameTextField.getText().equals(testingAuth)) && (enterPasswordField.getText().equals(testingAuth))) {
-			return true;
-		}
-	//	System.out.println("login invalid");
+		
+		String SQL = "SELECT * FROM user_account WHERE user_id = '"+ usernameTextField.getText()+"';";
+		
+		try {
+    		//Connection to the Database
+    		Connection c = DBUtil.getDataSource().getConnection();
+    		Statement stmt = c.createStatement();
+    		ResultSet validUser = stmt.executeQuery(SQL);
+    		
+    		if(validUser.next()) {
+    			if(validUser.getString("password").equals(enterPasswordField.getText()))
+    				return true;
+    		}
+    		else
+    			System.out.println("Username or Password is incorrect.");
+    		
+    	} catch (SQLException e) {
+    		e.printStackTrace();
+    	}
 		return false;
 	}
 	
