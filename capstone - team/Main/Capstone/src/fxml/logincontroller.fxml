@@ -38,7 +38,7 @@
                   </Label>
                   <TextField fx:id="usernameTextField" layoutX="119.0" layoutY="161.0" prefHeight="26.0" prefWidth="151.0" promptText="Username/Email" />
                   <PasswordField fx:id="enterPasswordField" layoutX="120.0" layoutY="197.0" prefHeight="26.0" prefWidth="152.0" promptText="Password" />
-                  <Button fx:id="loginMessageLabel" layoutX="3.0" layoutY="278.0" mnemonicParsing="false" onAction="#onClick_btn_login" prefHeight="29.0" prefWidth="121.0" style="-fx-background-color: #0000FF;" text="SIGN IN" textFill="WHITE">
+                  <Button fx:id="signupButton" layoutX="3.0" layoutY="278.0" mnemonicParsing="false" onAction="#onClick_btn_login" prefHeight="29.0" prefWidth="121.0" style="-fx-background-color: #0000FF;" text="SIGN IN" textFill="WHITE">
                      <font>
                         <Font size="14.0" />
                      </font>
@@ -48,7 +48,7 @@
                         <Font size="14.0" />
                      </font>
                   </Button>
-                  <Label fx:id="loginMessageLabel" alignment="CENTER" layoutX="-1.0" layoutY="239.0" prefHeight="19.0" prefWidth="277.0" text="Invalid Login, Please TRY AGAIN" textFill="#e90505">
+                  <Label fx:id="loginMessageLabel" alignment="CENTER" layoutX="-1.0" layoutY="239.0" prefHeight="19.0" prefWidth="277.0" textFill="#e90505">
                      <font>
                         <Font size="11.0" />
                      </font>
