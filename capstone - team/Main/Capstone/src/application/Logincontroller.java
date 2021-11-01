@@ -97,7 +97,7 @@ public class Logincontroller {
 			}
 			
 		} else
-			System.out.println("Username or Password fields cannot be blank. Please enter credentials and try again.");
+			loginMessageLabel.setText("Username or Password fields cannot be blank. Please enter credentials and try again.");
 				
 	}
 	
@@ -122,7 +122,7 @@ public class Logincontroller {
     				return true;
     		}
     		else
-    			System.out.println("Username or Password is incorrect.");
+    			loginMessageLabel.setText("Username or Password is incorrect.");
     		
     	} catch (SQLException e) {
     		e.printStackTrace();
