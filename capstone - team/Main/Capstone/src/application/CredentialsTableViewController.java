@@ -48,7 +48,7 @@ public class CredentialsTableViewController implements Initializable {
 		credentialsTable.setItems(getCredentials());
 	}
 	
-	public ObservableList<Credential> getCredentials()
+	public static ObservableList<Credential> getCredentials()
 	{
 		ArrayList<Credential> arr = new ArrayList<Credential>();
 		try {
