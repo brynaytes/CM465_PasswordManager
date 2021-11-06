@@ -34,8 +34,8 @@ public class Logincontroller {
 	private Button cancelButton;
 	@FXML
 	private Button signupButton;
-	//@FXML
-	//private Label loginMessageLabel;
+	@FXML
+	private Label loginMessageLabel;
 	@FXML
 	private ImageView brandingImageView;
 	@FXML
