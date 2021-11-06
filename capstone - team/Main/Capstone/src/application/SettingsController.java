@@ -25,9 +25,14 @@ public class SettingsController {
     	window.show();
 	}
 	
-	public void onClick_btn_Export(ActionEvent event) throws IOException
+	public void onClick_btn_Export(ActionEvent event)throws IOException
 	{
-		ExportToFile.doDownloadCSV("username", "C:\\Users\\bryna\\Desktop\\" );
+		try {
+			DirectoryChooser directoryChooser = new DirectoryChooser();
+			ExportToFile.doDownloadCSV("username", directoryChooser.showDialog((Stage)((Node)event.getSource()).getScene().getWindow()).toString() + "\\" );
+		}catch(NullPointerException e) {
+			//User closed the popup window without selecting a folder. Or other path error I think
+		}
 	}
 	
 }
