@@ -24,4 +24,10 @@ public class SettingsController {
     	window.setScene(tableViewScene);
     	window.show();
 	}
+	
+	public void onClick_btn_Export(ActionEvent event) throws IOException
+	{
+		ExportToFile.doDownloadCSV("username", "C:\\Users\\bryna\\Desktop\\" );
+	}
+	
 }
