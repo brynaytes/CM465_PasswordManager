@@ -55,7 +55,7 @@ public class CredentialsTableViewController implements Initializable {
 			//Connection to the Database
 			Connection c = DBUtil.getDataSource().getConnection();
 			//SQL for selecting the columns we want from the credential table
-			String SQL = "SELECT url, username, password FROM credential";
+			String SQL = "SELECT url, username, password FROM credential WHERE user_id='"+Logincontroller.username+"';";
 			//ResultSet
 			ResultSet rs = c.createStatement().executeQuery(SQL);
 			
