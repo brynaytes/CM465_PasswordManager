@@ -2,7 +2,6 @@ package application;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -10,18 +9,10 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import javafx.event.ActionEvent;
-
-
-import java.io.File;
 import java.io.IOException;
-import java.util.ResourceBundle;
-
-
-import java.net.URL;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -44,25 +35,8 @@ public class Logincontroller {
 	private TextField usernameTextField;
 	@FXML
 	private PasswordField enterPasswordField;
+	public static String username;
 	
-	/*
-	@Override
-	public void initialize(URL url, ResourceBundle resourceBundle) {
-		File brandingFile =new File( "@Password%20Manager-logos.jpeg");
-		Image brandingImage = new Image(brandingFile.toURI().toString());
-		brandingImageView.setImage(brandingImage);
-		
-		File lockFile =new File( "@Screenshot%202021-10-04%20012321.jpg");
-		Image lockImage = new Image(lockFile.toURI().toString());
-		lockImageview.setImage(lockImage);
-		
-		System.out.println("starting test");
-	}*/
-	
-	
-	public void initialize() {
-		//System.out.println("starting");
-	}
 	
 	public void onClick_btn_register(ActionEvent event) throws IOException{
 		//System.out.println("registering");
@@ -81,6 +55,7 @@ public class Logincontroller {
 		if ((usernameTextField.getText().isBlank() == false) && (enterPasswordField.getText().isBlank() == false))  {
 
 			if(validatelogin()) {
+				username = usernameTextField.getText();
 
 				//successful login, proceed to Main.fxml
 				Parent tableViewParent;
@@ -97,7 +72,7 @@ public class Logincontroller {
 			}
 			
 		} else
-			loginMessageLabel.setText("Username or Password fields cannot be blank. Please enter credentials and try again.");
+			loginMessageLabel.setText("The Username or Password fields cannot be blank.");
 				
 	}
 	
