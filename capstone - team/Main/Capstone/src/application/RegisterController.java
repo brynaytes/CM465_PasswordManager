@@ -1,6 +1,5 @@
 package application;
 
-import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.scene.Node;
 import javafx.scene.Parent;
@@ -9,16 +8,12 @@ import javafx.scene.control.Button;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javafx.scene.control.PasswordField;
-import javafx.scene.control.PasswordField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-
-
 
 import java.io.File;
 import java.io.IOException;
@@ -27,8 +22,6 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-//import java.sql.Connection;
-//import java.sql.Statement;
 import java.util.ResourceBundle;
 
 
@@ -47,9 +40,9 @@ private PasswordField confirmPasswordTextField;
 @FXML
 private Label confirmPasswordLabel;
 @FXML
-private TextField firstnameTextField;
+private TextField emailTextField;
 @FXML
-private TextField lastnameTextField;
+private TextField phoneTextField;
 @FXML
 private TextField usernameTextField;
 
@@ -110,8 +103,8 @@ private TextField usernameTextField;
       public void registerUser()
       {
     	  String UsernameSQL= "SELECT * FROM user_account WHERE user_id = '"+ usernameTextField.getText()+"';";
-    	  String RegisterSQL= "INSERT INTO user_account (user_id, password)"
-					+ "VALUES ('"+usernameTextField.getText()+"','"+setPasswordTextField.getText()+"');";
+    	  String RegisterSQL= "INSERT INTO user_account (user_id, password, phone_number, email)"
+					+ "VALUES ('"+usernameTextField.getText()+"','"+setPasswordTextField.getText()+"','"+phoneTextField.getText()+"','"+emailTextField.getText()+"');";
     	  
     	try {
     		//Connection to the Database
