@@ -4,12 +4,15 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -17,8 +20,10 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableColumn.CellEditEvent;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.stage.Stage;
 
 public class CredentialsTableViewController implements Initializable {
@@ -41,9 +46,67 @@ public class CredentialsTableViewController implements Initializable {
 	}
 	
 	@Override public void initialize(URL url, ResourceBundle rb) {
+		credentialsTable.setEditable(true);
+		
 		urlCol.setCellValueFactory(new PropertyValueFactory<Credential, String>("url"));
+		urlCol.setCellFactory(TextFieldTableCell.forTableColumn());
+		urlCol.setOnEditCommit(new EventHandler<CellEditEvent<Credential, String>>() {
+
+			@Override
+			public void handle(CellEditEvent<Credential, String> event) {
+				
+				try {
+					
+					Connection c = DBUtil.getDataSource().getConnection();
+					Statement stmt = c.createStatement();
+					String SQL = "UPDATE credential SET url = '"+event.getNewValue()+"' WHERE (url = '"+event.getRowValue().getUrl()+"' AND credential_id <> 0);";
+					stmt.executeUpdate(SQL);
+					
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}	
+		});
+		
 		usernameCol.setCellValueFactory(new PropertyValueFactory<Credential, String>("username"));
+		usernameCol.setCellFactory(TextFieldTableCell.forTableColumn());
+		usernameCol.setOnEditCommit(new EventHandler<CellEditEvent<Credential, String>>() {
+			
+			@Override
+			public void handle(CellEditEvent<Credential, String> event) {
+				
+				try {
+					
+					Connection c = DBUtil.getDataSource().getConnection();
+					Statement stmt = c.createStatement();
+					String SQL = "UPDATE credential SET username = '"+event.getNewValue()+"' WHERE (username = '"+event.getRowValue().getUsername()+"' AND credential_id <> 0);";
+					stmt.executeUpdate(SQL);
+					
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}	
+		});
+		
 		passwordCol.setCellValueFactory(new PropertyValueFactory<Credential, String>("password"));
+		passwordCol.setCellFactory(TextFieldTableCell.forTableColumn());
+		passwordCol.setOnEditCommit(new EventHandler<CellEditEvent<Credential, String>>() {
+			
+			@Override
+			public void handle(CellEditEvent<Credential, String> event) {
+				
+				try {
+					
+					Connection c = DBUtil.getDataSource().getConnection();
+					Statement stmt = c.createStatement();
+					String SQL = "UPDATE credential SET password = '"+event.getNewValue()+"' WHERE (password = '"+event.getRowValue().getPassword()+"' AND credential_id <> 0);";
+					stmt.executeUpdate(SQL);
+					
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}	
+		});
 		
 		credentialsTable.setItems(getCredentials());
 	}
