@@ -34,8 +34,8 @@ public class AddCredentialsController {
 			Connection c = DBUtil.getDataSource().getConnection();
 			Statement stmt = c.createStatement();
 			//SQL for selecting the columns we want from the credential table
-			String SQL = "INSERT INTO credential (url, username, password)"
-						+ "VALUES ('"+URL_txt.getText()+"','"+username_txt.getText()+"','"+password_txt.getText()+"');";
+			String SQL = "INSERT INTO credential (url, username, password, user_id)"
+						+ "VALUES ('"+URL_txt.getText()+"','"+username_txt.getText()+"','"+password_txt.getText()+"','"+Logincontroller.username+"');";
 			stmt.executeUpdate(SQL);
 			
 		} catch (SQLException e) {
