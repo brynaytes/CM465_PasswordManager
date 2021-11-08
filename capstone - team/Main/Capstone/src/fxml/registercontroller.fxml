@@ -25,30 +25,30 @@
             </Label>
          </children>
       </AnchorPane>
-      <Label layoutX="92.0" layoutY="114.0" text="Firstname">
+      <Label layoutX="92.0" layoutY="114.0" text="Username">
          <font>
             <Font name="Arial" size="13.0" />
          </font>
       </Label>
-      <TextField fx:id="firstnameTextField" layoutX="92.0" layoutY="134.0" prefHeight="25.0" prefWidth="336.0" promptText="Firstname">
+      <TextField fx:id="usernameTextField" layoutX="92.0" layoutY="134.0" prefHeight="25.0" prefWidth="336.0" promptText="Username">
          <font>
             <Font name="Arial" size="12.0" />
          </font></TextField>
-      <Label layoutX="92.0" layoutY="169.0" text="Lastname">
+      <Label layoutX="92.0" layoutY="169.0" text="Email">
          <font>
             <Font name="Arial" size="13.0" />
          </font>
       </Label>
-      <TextField fx:id="lastnameTextField" layoutX="92.0" layoutY="189.0" prefHeight="25.0" prefWidth="336.0" promptText="Lastname">
+      <TextField fx:id="emailTextField" layoutX="92.0" layoutY="189.0" prefHeight="25.0" prefWidth="336.0" promptText="Email">
          <font>
             <Font name="Arial" size="12.0" />
          </font></TextField>
-      <Label layoutX="92.0" layoutY="221.0" text="Username">
+      <Label layoutX="92.0" layoutY="221.0" text="Phone">
          <font>
             <Font name="Arial" size="13.0" />
          </font>
       </Label>
-      <TextField fx:id="usernameTextField" layoutX="92.0" layoutY="240.0" prefHeight="25.0" prefWidth="336.0" promptText="Username">
+      <TextField fx:id="phoneTextField" layoutX="92.0" layoutY="240.0" prefHeight="25.0" prefWidth="336.0" promptText="Phone">
          <font>
             <Font name="Arial" size="12.0" />
          </font></TextField>
