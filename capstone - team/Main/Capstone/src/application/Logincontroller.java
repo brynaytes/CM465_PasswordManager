@@ -86,6 +86,8 @@ public class Logincontroller {
 		
 		String SQL = "SELECT * FROM user_account WHERE user_id = '"+ usernameTextField.getText()+"';";
 		
+		String encryptedpassword = PasswordUtil.encrypt(enterPasswordField.getText());
+		
 		try {
     		//Connection to the Database
     		Connection c = DBUtil.getDataSource().getConnection();
@@ -93,8 +95,10 @@ public class Logincontroller {
     		ResultSet validUser = stmt.executeQuery(SQL);
     		
     		if(validUser.next()) {
-    			if(validUser.getString("password").equals(enterPasswordField.getText()))
+    			if(validUser.getString("password").equals(encryptedpassword))
     				return true;
+    			else
+    				loginMessageLabel.setText("Username or Password is incorrect.");
     		}
     		else
     			loginMessageLabel.setText("Username or Password is incorrect.");
