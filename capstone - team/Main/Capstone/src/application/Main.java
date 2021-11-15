@@ -1,7 +1,5 @@
 package application;
 	
-import java.io.IOException;
-
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
@@ -24,6 +22,7 @@ public class Main extends Application {
 				
 		primaryStage.setTitle("Password Manager");
 		primaryStage.setScene(scene);
+		root.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 		primaryStage.show();
 		} catch (Exception e) {
 			Alert alert = new Alert(AlertType.ERROR);
