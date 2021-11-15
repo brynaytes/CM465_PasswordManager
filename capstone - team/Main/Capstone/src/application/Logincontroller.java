@@ -2,6 +2,7 @@ package application;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -13,10 +14,12 @@ import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import javafx.event.ActionEvent;
 import java.io.IOException;
+import java.net.URL;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ResourceBundle;
 
 
 public class Logincontroller {
@@ -46,6 +49,7 @@ public class Logincontroller {
 			Scene tableViewScene = new Scene(tableViewParent);
 			Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
 			window.setScene(tableViewScene);
+			tableViewScene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			window.show();
 	}
 	
@@ -67,6 +71,7 @@ public class Logincontroller {
 					Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
 		    	
 					window.setScene(tableViewScene);
+					tableViewScene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 					window.show();
 		    	
 			}
@@ -86,8 +91,6 @@ public class Logincontroller {
 		
 		String SQL = "SELECT * FROM user_account WHERE user_id = '"+ usernameTextField.getText()+"';";
 		
-		String encryptedpassword = PasswordUtil.encrypt(enterPasswordField.getText());
-		
 		try {
     		//Connection to the Database
     		Connection c = DBUtil.getDataSource().getConnection();
@@ -95,10 +98,8 @@ public class Logincontroller {
     		ResultSet validUser = stmt.executeQuery(SQL);
     		
     		if(validUser.next()) {
-    			if(validUser.getString("password").equals(encryptedpassword))
+    			if(validUser.getString("password").equals(enterPasswordField.getText()))
     				return true;
-    			else
-    				loginMessageLabel.setText("Username or Password is incorrect.");
     		}
     		else
     			loginMessageLabel.setText("Username or Password is incorrect.");
@@ -108,5 +109,4 @@ public class Logincontroller {
     	}
 		return false;
 	}
-	
 }
