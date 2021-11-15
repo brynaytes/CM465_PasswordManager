@@ -103,6 +103,7 @@ public class PasswordGeneratorController {
     	Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
     	
     	window.setScene(tableViewScene);
+    	tableViewScene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
     	window.show();
 	}
 
