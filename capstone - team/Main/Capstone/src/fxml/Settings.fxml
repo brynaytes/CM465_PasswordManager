@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="application.SettingsController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="417.0" prefWidth="600.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="application.SettingsController">
    <children>
       <Label layoutX="253.0" layoutY="32.0" text="Settings">
          <font>
@@ -25,7 +25,7 @@
             <Font name="Arial" size="12.0" />
          </font>
       </Label>
-      <Label fx:id="email_lbl" layoutX="68.0" layoutY="138.0" text="Email Address">
+      <Label fx:id="email_lbl" layoutX="67.0" layoutY="135.0" text="Email Address">
          <font>
             <Font name="Arial" size="12.0" />
          </font>
@@ -40,22 +40,22 @@
             <Font name="Arial Bold Italic" size="14.0" />
          </font>
       </Label>
-      <Button fx:id="enableMFA_btn" layoutX="68.0" layoutY="242.0" mnemonicParsing="false" text="Enable">
+      <Button fx:id="enableMFA_btn" layoutX="48.0" layoutY="242.0" mnemonicParsing="false" text="Enable">
          <font>
             <Font name="Arial" size="12.0" />
          </font>
       </Button>
-      <Button fx:id="disableMFA_btn" disable="true" layoutX="147.0" layoutY="242.0" mnemonicParsing="false" text="Disable">
+      <Button fx:id="disableMFA_btn" disable="true" layoutX="167.0" layoutY="242.0" mnemonicParsing="false" text="Disable">
          <font>
             <Font name="Arial" size="12.0" />
          </font>
       </Button>
-      <RadioButton fx:id="email_rb" disable="true" layoutX="68.0" layoutY="283.0" mnemonicParsing="false" text="Email">
+      <RadioButton fx:id="email_rb" disable="true" layoutX="63.0" layoutY="288.0" mnemonicParsing="false" text="Email">
          <font>
             <Font name="Arial" size="12.0" />
          </font>
       </RadioButton>
-      <RadioButton fx:id="txtmsg_rb" disable="true" layoutX="125.0" layoutY="283.0" mnemonicParsing="false" text="Text Message">
+      <RadioButton fx:id="txtmsg_rb" disable="true" layoutX="130.0" layoutY="288.0" mnemonicParsing="false" text="Text Message">
          <font>
             <Font name="Arial" size="12.0" />
          </font>
@@ -88,12 +88,7 @@
             <Font name="Arial" size="12.0" />
          </font>
       </RadioButton>
-      <Label layoutX="412.0" layoutY="214.0" text="Credential Storage" underline="true">
-         <font>
-            <Font name="Arial Italic" size="13.0" />
-         </font>
-      </Label>
-      <Button layoutX="424.0" layoutY="318.0" mnemonicParsing="false" onAction="#onClick_btn_BackToMain" text="Back to Main" />
-      <Button fx:id="Export_btn" layoutX="422.0" layoutY="241.0" mnemonicParsing="false" onAction="#onClick_btn_Export" text="Export to CSV" />
+      <Button layoutX="423.0" layoutY="330.0" mnemonicParsing="false" onAction="#onClick_btn_BackToMain" prefHeight="27.0" prefWidth="137.0" text="Back to Main" />
+      <Button fx:id="Export_btn" layoutX="423.0" layoutY="276.0" mnemonicParsing="false" onAction="#onClick_btn_Export" prefHeight="25.0" prefWidth="137.0" text="Export to CSV" />
    </children>
 </AnchorPane>
