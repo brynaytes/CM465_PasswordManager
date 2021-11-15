@@ -4,14 +4,12 @@ import javafx.event.ActionEvent;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 import javafx.scene.control.PasswordField;
 import javafx.scene.image.Image;
@@ -25,6 +23,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ResourceBundle;
+
 
 public class RegisterController implements Initializable{
 	
@@ -58,51 +57,25 @@ private TextField usernameTextField;
 		  
 		  if(usernameTextField.getText().isBlank())
 		  {
-			  //System.out.println("Username is a required field.");
-			  Alert alert = new Alert(AlertType.ERROR);
-				alert.setHeaderText("Username Required");
-				alert.setContentText("Please enter a username.");
-				alert.show();
+			  System.out.println("Username is a required field.");
 		      usernameTextField.requestFocus();
 		  }
 		  else if(setPasswordTextField.getText().isBlank())
 		  {
-			  //System.out.println("You must enter a password.");
-			  Alert alert = new Alert(AlertType.ERROR);
-				alert.setHeaderText("Password Required");
-				alert.setContentText("Please enter a password.");
-				alert.show();
+			  System.out.println("You must enter a password.");
 			  setPasswordTextField.requestFocus();
 		  }
 		  else if(confirmPasswordTextField.getText().isEmpty())
 		  {
-			  //System.out.println("Please confirm the password.");
-			  Alert alert = new Alert(AlertType.ERROR);
-				alert.setHeaderText("Password Confirmation Required");
-				alert.setContentText("Please confirm your password.");
-				alert.show();
+			  System.out.println("Please confirm the password.");
 			  confirmPasswordTextField.requestFocus();
 		  }
 		  else if(setPasswordTextField.getText().equals(confirmPasswordTextField.getText()) == false)
 		  {
-			  //System.out.println("Passwords do not match, please try again.");
-			  Alert alert = new Alert(AlertType.ERROR);
-				alert.setHeaderText("Password Mismatch");
-				alert.setContentText("Passwords do not match, please try again.");
-				alert.show();
+			  System.out.println("Passwords do not match, please try again.");
 			  setPasswordTextField.clear();
 			  confirmPasswordTextField.clear();
 			  setPasswordTextField.requestFocus();
-		  }
-		  else if(phoneTextField.getText().length() != 9)
-		  {
-			  //System.out.println("Please enter a valid phone number.");
-			  Alert alert = new Alert(AlertType.ERROR);
-				alert.setHeaderText("Invalid Phone Number");
-				alert.setContentText("Please enter a valid phone number (do not include parentheses, spaces or hyphens).");
-				alert.show();
-			  phoneTextField.clear();
-			  phoneTextField.requestFocus();
 		  }
 		  else 
 			  registerUser(); 
@@ -117,6 +90,7 @@ private TextField usernameTextField;
 				Scene tableViewScene = new Scene(tableViewParent);
 				Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
 				window.setScene(tableViewScene);
+				tableViewScene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 				window.show();
 			  } catch (IOException e) {
 					e.printStackTrace();
@@ -126,13 +100,12 @@ private TextField usernameTextField;
 		  //Platform.exit();
 		  
 	  }
-
+	  
       public void registerUser()
       {
-    	  String encryptedpassword = PasswordUtil.encrypt(setPasswordTextField.getText());
     	  String UsernameSQL= "SELECT * FROM user_account WHERE user_id = '"+ usernameTextField.getText()+"';";
     	  String RegisterSQL= "INSERT INTO user_account (user_id, password, phone_number, email)"
-					+ "VALUES ('"+usernameTextField.getText()+"','"+encryptedpassword+"','"+phoneTextField.getText()+"','"+emailTextField.getText()+"');";
+					+ "VALUES ('"+usernameTextField.getText()+"','"+setPasswordTextField.getText()+"','"+phoneTextField.getText()+"','"+emailTextField.getText()+"');";
     	  
     	try {
     		//Connection to the Database
