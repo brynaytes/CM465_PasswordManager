@@ -9,16 +9,16 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="514.0" prefWidth="520.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="application.RegisterController">
+<AnchorPane prefHeight="514.0" prefWidth="520.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.RegisterController">
    <children>
-      <AnchorPane prefHeight="82.0" prefWidth="547.0" style="-fx-background-color: #0000FF;">
+      <AnchorPane prefHeight="82.0" prefWidth="547.0">
          <children>
             <ImageView fx:id="shieldImageView" fitHeight="42.0" fitWidth="69.0" layoutX="32.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@8.jpg" />
                </image>
             </ImageView>
-            <Label layoutX="79.0" layoutY="27.0" text="User Registration " textFill="WHITE">
+            <Label layoutX="79.0" layoutY="27.0" text="User Registration ">
                <font>
                   <Font name="Arial" size="18.0" />
                </font>
@@ -70,12 +70,12 @@
          <font>
             <Font name="Arial" size="12.0" />
          </font></PasswordField>
-      <Button fx:id="registerButton" layoutX="92.0" layoutY="389.0" mnemonicParsing="false" onAction="#registerButtonAction" prefHeight="25.0" prefWidth="336.0" style="-fx-background-color: #0000FF;" text="Register" textFill="#fffcfc">
+      <Button fx:id="registerButton" layoutX="92.0" layoutY="389.0" mnemonicParsing="false" onAction="#registerButtonAction" prefHeight="25.0" prefWidth="336.0" text="Register">
          <font>
             <Font name="Arial" size="13.0" />
          </font>
       </Button>
-      <Button fx:id="closeButton" layoutX="92.0" layoutY="433.0" mnemonicParsing="false" onAction="#closeButtonOnAction" prefHeight="25.0" prefWidth="336.0" style="-fx-background-color: #0000FF;" text="Close" textFill="#fffcfc">
+      <Button fx:id="closeButton" layoutX="92.0" layoutY="433.0" mnemonicParsing="false" onAction="#closeButtonOnAction" prefHeight="25.0" prefWidth="336.0" text="Close">
          <font>
             <Font name="Arial" size="13.0" />
          </font>
