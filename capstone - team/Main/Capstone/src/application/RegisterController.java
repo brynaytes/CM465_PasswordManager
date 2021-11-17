@@ -57,25 +57,46 @@ private TextField usernameTextField;
 		  
 		  if(usernameTextField.getText().isBlank())
 		  {
-			  System.out.println("Username is a required field.");
-		      usernameTextField.requestFocus();
+			  Alert alert = new Alert(AlertType.ERROR);
+				alert.setHeaderText("Username Required");
+				alert.setContentText("Please enter a username.");
+				alert.show();
+		 	  usernameTextField.requestFocus();
 		  }
 		  else if(setPasswordTextField.getText().isBlank())
 		  {
-			  System.out.println("You must enter a password.");
+			  Alert alert = new Alert(AlertType.ERROR);
+				alert.setHeaderText("Password Required");
+				alert.setContentText("Please enter a password.");
+				alert.show();
 			  setPasswordTextField.requestFocus();
 		  }
 		  else if(confirmPasswordTextField.getText().isEmpty())
 		  {
-			  System.out.println("Please confirm the password.");
+			  Alert alert = new Alert(AlertType.ERROR);
+				alert.setHeaderText("Password Confirmation Required");
+				alert.setContentText("Please confirm your password.");
+				alert.show();
 			  confirmPasswordTextField.requestFocus();
 		  }
 		  else if(setPasswordTextField.getText().equals(confirmPasswordTextField.getText()) == false)
 		  {
-			  System.out.println("Passwords do not match, please try again.");
+			  Alert alert = new Alert(AlertType.ERROR);
+				alert.setHeaderText("Password Mismatch");
+				alert.setContentText("Passwords do not match, please try again.");
+				alert.show();
 			  setPasswordTextField.clear();
 			  confirmPasswordTextField.clear();
 			  setPasswordTextField.requestFocus();
+		  }
+		  else if(phoneTextField.getText().length() != 9)
+		  {
+			  Alert alert = new Alert(AlertType.ERROR);
+				alert.setHeaderText("Invalid Phone Number");
+				alert.setContentText("Please enter a valid phone number (do not include parentheses, spaces or hyphens).");
+				alert.show();
+			  phoneTextField.clear();
+			  phoneTextField.requestFocus();
 		  }
 		  else 
 			  registerUser(); 
@@ -103,9 +124,10 @@ private TextField usernameTextField;
 	  
       public void registerUser()
       {
+	  String encryptedpassword = PasswordUtil.encrypt(setPasswordTextField.getText());
     	  String UsernameSQL= "SELECT * FROM user_account WHERE user_id = '"+ usernameTextField.getText()+"';";
     	  String RegisterSQL= "INSERT INTO user_account (user_id, password, phone_number, email)"
-					+ "VALUES ('"+usernameTextField.getText()+"','"+setPasswordTextField.getText()+"','"+phoneTextField.getText()+"','"+emailTextField.getText()+"');";
+					+ "VALUES ('"+usernameTextField.getText()+"','"+encryptedpassword+"','"+phoneTextField.getText()+"','"+emailTextField.getText()+"');";
     	  
     	try {
     		//Connection to the Database
