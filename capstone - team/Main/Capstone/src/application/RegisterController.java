@@ -91,7 +91,7 @@ private TextField usernameTextField;
 			  confirmPasswordTextField.clear();
 			  setPasswordTextField.requestFocus();
 		  }
-		  else if(phoneTextField.getText().length() != 9)
+		  else if(phoneTextField.getText().length() != 10)
 		  {
 			  Alert alert = new Alert(AlertType.ERROR);
 				alert.setHeaderText("Invalid Phone Number");
