@@ -1,31 +1,30 @@
 .root {
 	-fx-background-color: 
         #000000,
-        linear-gradient(#000020, #000000),
-        linear-gradient(#000020, #000000);
-	-fx-border-color: #000000;
+        linear-gradient(#ada996, #f2f2f2),
+        linear-gradient(#ffffff, #dddddd);
+	-fx-border-color: #ffffff;
 }
 
 .button {
 	-fx-background-color: 
         #ffffff,
-        linear-gradient(#66ffff, #66ffff),
-        linear-gradient(#000000, #000000),
-        linear-gradient(#000000, #000000);
+        linear-gradient(#ffffff, #dddddd),
+        linear-gradient(#797979, #797979),
+        linear-gradient(#0066ff, #0033cc);
     -fx-background-insets: 0,1,2,3;
     -fx-background-radius: 3,2,2,2;
     -fx-padding: 12 30 12 30;
-    -fx-text-fill: #66ffff;
+    -fx-text-fill: white;
     -fx-font-size: 12px;
 }
 
 .button:hover {
 	-fx-background-color: 
-        linear-gradient(from 0% 93% to 0% 100%, #33cccc 0%, #33cccc 100%),
-        #000020,
-        #000020,
-        radial-gradient(center 50% 50%, radius 100%, #66ffff, #00ffff);
-        -fx-text-fill: black;
+        linear-gradient(from 0% 93% to 0% 100%, #a34313 0%, #903b12 100%),
+        #9d4024,
+        #d86e3a,
+        radial-gradient(center 50% 50%, radius 100%, #ea7f4b, #c54e2c);
 }
 
 .button:pressed {
@@ -36,39 +35,27 @@
 .label {
 	-fx-font-family: "Helvetica";
 	-fx-font-weight: bold;
-	-fx-text-fill: #66ffff;
 	-fx-effect: dropshadow( gaussian , rgba(255,255,255,0.5) , 0,0,0,1 );
 }
 
 .text-field {
 	-fx-font-family: "Helvetica";
-	-fx-prompt-text-fill: #b0b0b0;
+	-fx-prompt-text-fill: #4e5c66;
+	-fx-border-color: black;
 }
 
 .table-view {
 	-fx-cursor: hand;
 }
 
-.radio-button {
+.radio-button:armed {
 	-fx-font-weight: bold;
-	-fx-text-fill: #bbbbbb;
-}
-
-.check-box{
-	-fx-text-fill: #bbbbbb;
 }
 
 .check-box:selected{
 	-fx-font-weight: bold;
-	-fx-text-fill: #ffffff;
 }
 
 .choice-box {
-	-fx-effect: innershadow( gaussian, rgba(0,0,0,0.5), 0, 0 , 0, 1);
-	-fx-background-color: #222222;
-	-fx-text-fill: #000000;
+	-fx-effect: innershadow( gaussian, rgba(255,255,255,0.5), 0, 0 , 0, 1); 
 }
-.choice-box:armed{
-		-fx-background-color: #222222;
-}
-
