@@ -55,7 +55,10 @@ public class AddCredentialsController {
     	Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
     	
     	window.setScene(tableViewScene);
-    	tableViewScene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+    	if(MainController.lightTheme == true)
+    		tableViewScene.getStylesheets().add(getClass().getResource("LightTheme.css").toExternalForm());
+    	else
+    		tableViewScene.getStylesheets().add(getClass().getResource("DarkTheme.css").toExternalForm());    	
     	window.show();
 	}
 	
