@@ -113,7 +113,7 @@ private TextField usernameTextField;
 				Scene tableViewScene = new Scene(tableViewParent);
 				Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
 				window.setScene(tableViewScene);
-				tableViewScene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+				tableViewScene.getStylesheets().add(getClass().getResource("LightTheme.css").toExternalForm());
 				window.show();
 			  } catch (IOException e) {
 					e.printStackTrace();
