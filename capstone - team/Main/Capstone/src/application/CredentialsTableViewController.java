@@ -42,6 +42,10 @@ public class CredentialsTableViewController implements Initializable {
     	Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
     	
     	window.setScene(tableViewScene);
+    	if(MainController.lightTheme == true)
+    		tableViewScene.getStylesheets().add(getClass().getResource("LightTheme.css").toExternalForm());
+    	else
+    		tableViewScene.getStylesheets().add(getClass().getResource("DarkTheme.css").toExternalForm());
     	window.show();
 	}
 	
