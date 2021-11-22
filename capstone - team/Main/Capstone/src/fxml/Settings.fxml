@@ -80,15 +80,15 @@
             <Font name="Arial" size="12.0" />
          </font>
          <toggleGroup>
-            <ToggleGroup fx:id="Theme" />
+            <ToggleGroup fx:id="theme" />
          </toggleGroup>
       </RadioButton>
-      <RadioButton fx:id="darkTheme_rb" layoutX="423.0" layoutY="137.0" mnemonicParsing="false" text="Dark Theme" toggleGroup="$Theme">
+      <RadioButton fx:id="darkTheme_rb" layoutX="423.0" layoutY="137.0" mnemonicParsing="false" text="Dark Theme" toggleGroup="$theme">
          <font>
             <Font name="Arial" size="12.0" />
          </font>
       </RadioButton>
-      <Button layoutX="423.0" layoutY="330.0" mnemonicParsing="false" onAction="#onClick_btn_BackToMain" prefHeight="27.0" prefWidth="137.0" text="Back to Main" />
+      <Button layoutX="423.0" layoutY="330.0" mnemonicParsing="false" onAction="#onClick_btn_SaveAndExit" prefHeight="27.0" prefWidth="137.0" text="Save &amp; Exit" />
       <Button fx:id="Export_btn" layoutX="423.0" layoutY="276.0" mnemonicParsing="false" onAction="#onClick_btn_Export" prefHeight="25.0" prefWidth="137.0" text="Export to CSV" />
    </children>
 </AnchorPane>
