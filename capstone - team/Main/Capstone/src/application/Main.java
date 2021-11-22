@@ -20,7 +20,7 @@ public class Main extends Application {
 		
 		Scene scene = new Scene(root);
 				
-		primaryStage.setTitle("Password Manager");
+		primaryStage.setTitle("WU Safe");
 		primaryStage.setScene(scene);
 		root.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 		primaryStage.show();
