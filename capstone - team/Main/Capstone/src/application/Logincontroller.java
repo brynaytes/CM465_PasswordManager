@@ -49,7 +49,7 @@ public class Logincontroller {
 			Scene tableViewScene = new Scene(tableViewParent);
 			Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
 			window.setScene(tableViewScene);
-			tableViewScene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+			tableViewScene.getStylesheets().add(getClass().getResource("LightTheme.css").toExternalForm());
 			window.show();
 	}
 	
@@ -60,7 +60,7 @@ public class Logincontroller {
 
 			if(validatelogin()) {
 				username = usernameTextField.getText();
-
+				
 				//successful login, proceed to Main.fxml
 				Parent tableViewParent;
 				
@@ -71,7 +71,7 @@ public class Logincontroller {
 					Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
 		    	
 					window.setScene(tableViewScene);
-					tableViewScene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+			    	tableViewScene.getStylesheets().add(getClass().getResource("LightTheme.css").toExternalForm());				
 					window.show();
 		    	
 			}
