@@ -8,7 +8,11 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+
+
 public class MainController {
+	
+	public static boolean lightTheme = true;
 	
 	public void onClick_btn_AddCredentials(ActionEvent event) throws IOException
     {
@@ -18,7 +22,10 @@ public class MainController {
     	Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
     	
     	window.setScene(tableViewScene);
-    	tableViewScene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+    	if(lightTheme == true)
+    		tableViewScene.getStylesheets().add(getClass().getResource("LightTheme.css").toExternalForm());
+    	else
+    		tableViewScene.getStylesheets().add(getClass().getResource("DarkTheme.css").toExternalForm());
     	window.show();
     }
 	
@@ -30,7 +37,10 @@ public class MainController {
     	Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
     	
     	window.setScene(tableViewScene);
-    	tableViewScene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+    	if(lightTheme == true)
+    		tableViewScene.getStylesheets().add(getClass().getResource("LightTheme.css").toExternalForm());
+    	else
+    		tableViewScene.getStylesheets().add(getClass().getResource("DarkTheme.css").toExternalForm());
     	window.show();
     }
 	
@@ -42,7 +52,10 @@ public class MainController {
     	Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
     	
     	window.setScene(tableViewScene);
-    	tableViewScene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+    	if(lightTheme == true)
+    		tableViewScene.getStylesheets().add(getClass().getResource("LightTheme.css").toExternalForm());
+    	else
+    		tableViewScene.getStylesheets().add(getClass().getResource("DarkTheme.css").toExternalForm());
     	window.show();
     }
 	
@@ -54,7 +67,10 @@ public class MainController {
     	Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
     	
     	window.setScene(tableViewScene);
-    	tableViewScene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+    	if(lightTheme == true)
+    		tableViewScene.getStylesheets().add(getClass().getResource("LightTheme.css").toExternalForm());
+    	else
+    		tableViewScene.getStylesheets().add(getClass().getResource("DarkTheme.css").toExternalForm());
     	window.show();
     }
     
@@ -73,7 +89,10 @@ public class MainController {
     	Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
     	
     	window.setScene(tableViewScene);
-    	tableViewScene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+    	if(lightTheme == true)
+    		tableViewScene.getStylesheets().add(getClass().getResource("LightTheme.css").toExternalForm());
+    	else
+    		tableViewScene.getStylesheets().add(getClass().getResource("DarkTheme.css").toExternalForm());  	
     	window.show();
 	}
 	
