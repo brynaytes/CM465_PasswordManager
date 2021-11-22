@@ -7,7 +7,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ResourceBundle;
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -16,6 +15,8 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.control.RadioButton;
+import javafx.scene.control.ToggleGroup;
 import javafx.stage.Stage;
 import javafx.stage.DirectoryChooser;
 
@@ -28,6 +29,11 @@ public class SettingsController implements Initializable {
 	private Label email_lbl;
 	@FXML
 	private Label phone_lbl;
+	@FXML
+	private RadioButton lightTheme_rb;
+	@FXML
+	private RadioButton darkTheme_rb;
+	
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
@@ -59,7 +65,7 @@ public class SettingsController implements Initializable {
 		
 	}
 	
-	public void onClick_btn_BackToMain(ActionEvent event) throws IOException
+	public void onClick_btn_SaveAndExit(ActionEvent event) throws IOException
 	{
 		Parent tableViewParent = FXMLLoader.load(getClass().getResource("/fxml/Main.fxml"));
     	Scene tableViewScene = new Scene(tableViewParent);
@@ -67,7 +73,15 @@ public class SettingsController implements Initializable {
     	Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
     	
     	window.setScene(tableViewScene);
-    	tableViewScene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+    	if(lightTheme_rb.isSelected()) {
+    		tableViewScene.getStylesheets().add(getClass().getResource("LightTheme.css").toExternalForm());
+    		lightTheme_rb.setSelected(true);
+    		MainController.lightTheme = true;
+    	} else {
+    		tableViewScene.getStylesheets().add(getClass().getResource("DarkTheme.css").toExternalForm());
+    		darkTheme_rb.setSelected(true);
+    		MainController.lightTheme = false;
+    	}
     	window.show();
 	}
 	
