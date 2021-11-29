@@ -41,6 +41,12 @@ public class SettingsController implements Initializable {
 		String setEmail = null;
 		String setPhone = null;
 		
+		if(MainController.lightTheme) {
+			lightTheme_rb.setSelected(true);
+		}else {
+			darkTheme_rb.setSelected(true);
+		}
+		
 		try {
 			Connection c = DBUtil.getDataSource().getConnection();
 			Statement stmt = c.createStatement();
