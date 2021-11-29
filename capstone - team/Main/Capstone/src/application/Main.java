@@ -22,7 +22,7 @@ public class Main extends Application {
 				
 		primaryStage.setTitle("WU Safe");
 		primaryStage.setScene(scene);
-		root.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+		root.getStylesheets().add(getClass().getResource("LightTheme.css").toExternalForm());
 		primaryStage.show();
 		} catch (Exception e) {
 			Alert alert = new Alert(AlertType.ERROR);
