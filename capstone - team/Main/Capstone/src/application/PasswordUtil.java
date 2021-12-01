@@ -31,8 +31,8 @@ public class PasswordUtil {
 	            e.printStackTrace();  
 	        }  
 	          
-	        System.out.println("Plain-text password: " + password);  
-	        System.out.println("Encrypted password using MD5: " + encryptedpassword);  
+	       // System.out.println("Plain-text password: " + password);  
+	       // System.out.println("Encrypted password using MD5: " + encryptedpassword);  
 	        
 	        return encryptedpassword;
 	  }
