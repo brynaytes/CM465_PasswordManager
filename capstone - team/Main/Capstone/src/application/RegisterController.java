@@ -137,12 +137,24 @@ private TextField usernameTextField;
     		Statement stmt = c.createStatement();
     		ResultSet results = stmt.executeQuery(UsernameSQL);
     		
-    		if(results.next())
-    			System.out.println("That username is unavailable, please enter a new username.");
-    		else
+    		if(results.next()) {
+    			Alert alert = new Alert(AlertType.ERROR);
+    			alert.setHeaderText("Username unavailable");
+    			alert.setContentText("That username is not available. Please choose a different username.");
+    			alert.show();
+    		} else {
     			stmt.executeUpdate(RegisterSQL);
+    			Alert alert = new Alert(AlertType.INFORMATION);
+    			alert.setHeaderText("Success");
+    			alert.setContentText("Registration successful");
+    			alert.show();
+    		}
     		
-    		System.out.println("Registration Successful");
+    		setPasswordTextField.clear();
+    		confirmPasswordTextField.clear();
+    		emailTextField.clear();
+    		phoneTextField.clear();
+    		usernameTextField.clear();
     		
     	} catch (SQLException e) {
     		e.printStackTrace();
