@@ -25,7 +25,7 @@ public class PasswordLogic {
 			}
 
 			if(sy == true && i < length) {
-				String randomSymbol = randomCharacter("`~!@#$%^&*()-_=+|}{][;:',<.>/?");
+				String randomSymbol = randomCharacter("`~!@#$%^&*()-_=+|}{][;:,<.>/?");
 				password = insertAtRandom(password, randomSymbol);
 				i++;
 			}
