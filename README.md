@@ -12,7 +12,7 @@ To run:
 
 Download the zip file.
 Inside the "Final Project" folder is the application we presented on December 6, 2021. It contains the main class. 
-We recommend you use an IDE for this install, as it has a large number of dependencies. We used eclipse for development. 
+We recommend you use an IDE for this install, as it has a several dependencies. We used eclipse for development. 
 Add all the files in the "Dependencies" folder to the buildpath of the project. 
 Run the "Main.java" class. 
 
